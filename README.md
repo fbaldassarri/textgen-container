@@ -1,8 +1,3 @@
-TODO
-install requirements pip install -r requirements.txt --upgrade
-+ pip3 install torch torchvision torchaudio
-
-
 # Docker image to deploy an alpaca-cpp container with conda-ready environments 
 
 ## Requirements

@@ -57,12 +57,22 @@ RUN su - textgen-user -c "git clone https://github.com/oobabooga/text-generation
                             && cd ~/text-generation-webui "
 
 # Install pip requirements
-RUN su - textgen-user -c "cd ~/text-generation-webui \ 
-                            && pip install -r requirements.txt "
+# RUN su - textgen-user -c "cd ~/text-generation-webui \ 
+#                             && pip install -r requirements.txt "
+
+# Install xformers through pip 
+# RUN su - textgen-user -c "pip install xformers "
+
+# Install pytorchvision and torchaudio through pip (this could break compatibility with xformers, be careful)
+# RUN su - textgen-user -c "pip install torchvision torchaudio"
+
+# Install deepspeed (and its requirements)
+# RUN su - textgen-user -c "conda install -c conda-forge -y mpi4py mpich \
+#                              && pip install -U deepspeed"
 
 # Download default testing model
-RUN su - textgen-user -c "cd ~/text-generation-webui \ 
-                            && python download-model.py facebook/opt-6.7b "
+# RUN su - textgen-user -c "cd ~/text-generation-webui \ 
+#                             && python download-model.py EleutherAI/gpt-j-6b "
 
 # Preparing for login
 ENV HOME /home/textgen-home
@@ -70,4 +80,6 @@ WORKDIR ${HOME}/text-generation-webui
 USER textgen-user
 
 # Installing and Lanching text-generation-webui
-CMD ["/bin/bash", "-c", "~/alpaca.cpp/python", "server.py"] 
+# CMD ["/bin/bash", "-c", "~/text-generation-webui/python", "server.py"] 
+# CMD ["/bin/bash", "-c", "~/text-generation-webui/deepspeed", "--num_gpus=1", "server.py", "--deepspeed", "--chat", "--model", "gpt-j-6B"] 
+CMD ["/bin/bash"]
