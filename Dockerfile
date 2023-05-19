@@ -58,12 +58,15 @@ RUN su - textgen-user -c "source ~/.bashrc "
 # Download latest oobabooga/text-generation-webui in text-generation-webui directory and compile it
 RUN su - textgen-user -c "git clone https://github.com/oobabooga/text-generation-webui.git ~/text-generation-webui "
 
+# Install pip upgrade
+RUN su - textgen-user -c "/opt/conda/envs/textgen/bin/pip install --upgrade pip "
+
 # Install pip requirements
 RUN su - textgen-user -c "cd ~/text-generation-webui \ 
                             && /opt/conda/envs/textgen/bin/pip install -r requirements.txt --upgrade"
 
 # Install xformers through pip 
-# RUN su - textgen-user -c "/opt/conda/envs/textgen/bin/pip install xformers "
+RUN su - textgen-user -c "/opt/conda/envs/textgen/bin/pip install xformers "
 
 # Install pytorchvision and torchaudio through pip (not recommended as this could break compatibility with xformers, be careful)
 # RUN su - textgen-user -c "/opt/conda/envs/textgen/bin/pip install torchvision torchaudio"
@@ -82,6 +85,6 @@ WORKDIR ${HOME}/text-generation-webui
 USER textgen-user
 
 # Installing and Lanching text-generation-webui
-# CMD ["/bin/bash", "-c", "~/text-generation-webui/python", "server.py"] 
+CMD ["/bin/bash", "-c", "~/text-generation-webui/python", "server.py"] 
 # CMD ["/bin/bash", "-c", "~/text-generation-webui/deepspeed", "--num_gpus=1", "server.py", "--deepspeed", "--chat", "--model", "gpt-j-6B"] 
-CMD ["/bin/bash"]
+# CMD ["/bin/bash"]
