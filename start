@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker run -dit --name textgen-container -p 221:22 --runtime=nvidia --gpus all --shm-size="12gb" --restart unless-stopped alpaca-cpp-container:latest
