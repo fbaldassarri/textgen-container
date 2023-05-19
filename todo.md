@@ -1,5 +1,7 @@
 ## TODO
 
+### check docker server host requirements within ./build and ./start scripts
+
 ### CUDA_HOME installation is required.
 
 ### install requirements 
