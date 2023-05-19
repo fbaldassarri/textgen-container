@@ -65,7 +65,7 @@ RUN su - textgen-user -c "cd ~/text-generation-webui \
 # Install xformers through pip 
 # RUN su - textgen-user -c "/opt/conda/envs/textgen/bin/pip install xformers "
 
-# Install pytorchvision and torchaudio through pip (this could break compatibility with xformers, be careful)
+# Install pytorchvision and torchaudio through pip (not recommended as this could break compatibility with xformers, be careful)
 # RUN su - textgen-user -c "/opt/conda/envs/textgen/bin/pip install torchvision torchaudio"
 
 # Install deepspeed (and its requirements)
