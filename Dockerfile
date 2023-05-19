@@ -87,4 +87,8 @@ USER textgen-user
 # Installing and Lanching text-generation-webui
 # CMD ["/bin/bash", "-c", "/opt/conda/envs/textgen/bin/python3.10", "~/text-generation-webui/server.py", "--listen"] 
 # CMD ["/bin/bash", "-c", "~/text-generation-webui/deepspeed", "--num_gpus=1", "server.py", "--deepspeed", "--chat", "--model", "gpt-j-6B"] 
+
+
+COPY startup.sh .
+# CMD ["/bin/bash","-c","./startup.sh"]
 CMD ["/bin/bash"]
