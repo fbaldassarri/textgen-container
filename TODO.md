@@ -4,6 +4,21 @@
 
 ### CUDA_HOME installation is required.
 
+method 1
+sudo apt install software-properties-common gnupg
+sudo add-apt-repository contrib
+sudo apt-key del 7fa2af80
+wget https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64/cuda-keyring_1.0-1_all.deb
+sudo dpkg -i cuda-keyring_1.0-1_all.deb
+sudo apt-get update
+sudo apt-get --allow-releaseinfo-change update
+
+method 2
+docker pull nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+
+
+
+
 ### install requirements 
 pip install -r requirements.txt --upgrade
 + pip3 install torch torchvision torchaudio
