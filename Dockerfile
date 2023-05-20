@@ -90,6 +90,12 @@ RUN su - textgen-user -c "~/miniconda3/envs/textgen/bin/pip install torch xforme
 # Install pytorchvision and torchaudio through pip (not recommended as this could break compatibility with xformers, be careful)
 # RUN su - textgen-user -c "~/miniconda3/envs/textgen/bin/pip install torchvision torchaudio"
 
+# Resolving "The installed version of bitsandbytes was compiled without GPU support." issue
+RUN su - textgen-user -c "~/miniconda3/bin/conda install pytorch pytorch-cuda -c pytorch -c nvidia -y \
+                            && ~/miniconda3/envs/textgen/bin/pip install accelerate \
+                            && ~/miniconda3/envs/textgen/bin/pip install transformers \
+                            && ~/miniconda3/envs/textgen/bin/pip install bitsandbytes "
+
 # Install deepspeed pre-requirements 
 RUN su - textgen-user -c "~/miniconda3/condabin/conda install -c conda-forge -y mpi4py mpich "
 
