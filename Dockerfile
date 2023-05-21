@@ -97,14 +97,14 @@ RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
 
 # Resolving "The installed version of bitsandbytes was compiled without GPU support." issue
 RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
-                            && ~/miniconda3/bin/conda install pytorch pytorch-cuda -c pytorch -c nvidia -y \
+                            && ~/miniconda3/bin/conda install pytorch pytorch-cuda -c pytorch -c nvidia -y -n textgen \
                             && ~/miniconda3/envs/textgen/bin/pip install accelerate \
                             && ~/miniconda3/envs/textgen/bin/pip install transformers \
                             && ~/miniconda3/envs/textgen/bin/pip install bitsandbytes "
 
 # Install deepspeed and its pre-requirements 
 # RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
-#                           && ~/miniconda3/condabin/conda install -c conda-forge -y mpi4py mpich \
+#                           && ~/miniconda3/condabin/conda install -c conda-forge -y mpi4py mpich -n textgen \
 #                           && ~/miniconda3/envs/textgen/bin/pip install -U deepspeed "
 
 # Download default testing model
