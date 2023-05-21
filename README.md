@@ -2,9 +2,10 @@
 
 ## Requirements
 
-1. You have gnu/linux
-2. You have docker engine installed
-3. You have an NVIDIA gpu
+1. You have gnu/linux or macOS
+2. You have at least 64 GB of RAM
+3. You have docker engine installed
+4. You have an NVIDIA gpu with >=4GB VRAM and supporting CUDA >=7.5
 
 ## Preliminary steps
 

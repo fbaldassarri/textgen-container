@@ -54,7 +54,7 @@ RUN su - textgen-user -c "source ~/.bashrc "
 RUN su - textgen-user -c "cd ~/miniconda3/bin \
                             && ./conda update conda -y " 
 
-# check eventual conda base env updates
+# check eventual conda (base) env updates
 RUN su - textgen-user -c "cd ~/miniconda3/bin \
                             && ./conda update --all -y " 
 
@@ -69,7 +69,8 @@ RUN su - textgen-user -c "cd ~/miniconda3/bin \
 # RUN su - textgen-user -c "conda init bash"
 
 # conda activate textgen env
-RUN su - textgen-user -c "echo \"conda activate textgen\" >> ~/.bashrc "
+RUN su - textgen-user -c "echo \"conda activate textgen\" >> ~/.bashrc \
+                            && echo \" \" >> ~/.bashrc "
 
 # reload session within container build session
 RUN su - textgen-user -c "source ~/.bashrc "
@@ -78,29 +79,33 @@ RUN su - textgen-user -c "source ~/.bashrc "
 RUN su - textgen-user -c "git clone https://github.com/oobabooga/text-generation-webui.git ~/text-generation-webui "
 
 # Install pip upgrade
-RUN su - textgen-user -c "~/miniconda3/envs/textgen/bin/pip install --upgrade pip "
+RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
+                            && ~/miniconda3/envs/textgen/bin/pip install --upgrade pip "
 
 # Install pip requirements
-RUN su - textgen-user -c "cd ~/text-generation-webui \ 
+RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
+                            && cd ~/text-generation-webui \
                             && ~/miniconda3/envs/textgen/bin/pip install -r requirements.txt --upgrade"
 
 # Install additional requirements through pip 
-RUN su - textgen-user -c "~/miniconda3/envs/textgen/bin/pip install torch xformers "
+RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
+                            && ~/miniconda3/envs/textgen/bin/pip install torch xformers "
 
 # Install pytorchvision and torchaudio through pip (not recommended as this could break compatibility with xformers, be careful)
-# RUN su - textgen-user -c "~/miniconda3/envs/textgen/bin/pip install torchvision torchaudio"
+# RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
+#                           && ~/miniconda3/envs/textgen/bin/pip install torchvision torchaudio "
 
 # Resolving "The installed version of bitsandbytes was compiled without GPU support." issue
-RUN su - textgen-user -c "~/miniconda3/bin/conda install pytorch pytorch-cuda -c pytorch -c nvidia -y \
+RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
+                            && ~/miniconda3/bin/conda install pytorch pytorch-cuda -c pytorch -c nvidia -y \
                             && ~/miniconda3/envs/textgen/bin/pip install accelerate \
                             && ~/miniconda3/envs/textgen/bin/pip install transformers \
                             && ~/miniconda3/envs/textgen/bin/pip install bitsandbytes "
 
-# Install deepspeed pre-requirements 
-RUN su - textgen-user -c "~/miniconda3/condabin/conda install -c conda-forge -y mpi4py mpich "
-
-# Install deepspeed 
-# RUN su - textgen-user -c "~/miniconda3/envs/textgen/bin/pip install -U deepspeed "
+# Install deepspeed and its pre-requirements 
+# RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
+#                           && ~/miniconda3/condabin/conda install -c conda-forge -y mpi4py mpich \
+#                           && ~/miniconda3/envs/textgen/bin/pip install -U deepspeed "
 
 # Download default testing model
 RUN su - textgen-user -c "cd ~/text-generation-webui \ 
