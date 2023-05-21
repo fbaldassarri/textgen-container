@@ -14,16 +14,16 @@
 **decided method**
 docker pull nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
 
-### install requirements 
-pip install -r requirements.txt --upgrade
-+ pip3 install torch torchvision torchaudio
+~~### install requirements~~ 
+~~pip install -r requirements.txt --upgrade~~
+~~+ pip3 install torch torchvision torchaudio~~
 
 
 ### install deepspeed
 pip install -U deepspeed
 
-### launch with deepspeed
-deepspeed --num_gpus=1 server.py --deepspeed --chat --model gpt-j-6B
+~~### launch with deepspeed~~
+~~deepspeed --num_gpus=1 server.py --deepspeed --chat --model gpt-j-6B~~
 
 ### start script
 to be corrected to be launched though nvidia-container-runtime
@@ -33,9 +33,8 @@ externalize `/text-generation-webui/models
 
 #### Enable SSH/SCP
 
-### bitsandbytes GPU-ready
-~~conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia~~
-conda install pytorch pytorch-cuda -c pytorch -c nvidia
-pip install accelerate
-pip install transformers
-pip install bitsandbytes
+~~### bitsandbytes GPU-ready~~
+~~conda install pytorch pytorch-cuda -c pytorch -c nvidia~~
+~~pip install accelerate~~
+~~pip install transformers~~
+~~pip install bitsandbytes~~
