@@ -1,4 +1,4 @@
-# Dockerfile script to build a docker container for oobabooga/text-generation-webui with conda-ready environments 
+# Dockerfile script to build a docker container for oobabooga/text-generation-webui with conda-ready environment  
 For low GPU VRAM-capable machines
 
 ## Requirements
