@@ -48,4 +48,4 @@ docker container attach alpaca-cpp-container
 
 ### Note
 
-* 
+* Deepspeed does not correctly compile
