@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
 docker run -dit --name text-generation-webui -p 221:22 -p 7861:7860 --hostname textgen-container --runtime=nvidia --gpus all --shm-size="60gb" --restart unless-stopped textgen-container:latest
+
+# docker run -dit --name text-generation-webui -p 221:22 -p 7861:7860 --hostname textgen-container --runtime=nvidia --gpus 'all,"capabilities=compute,utility"' --shm-size="60gb" --restart unless-stopped textgen-container:latest
+
+# docker run -dit --name text-generation-webui -p 221:22 -p 7861:7860 --hostname textgen-container --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0 -e NVIDIA_DRIVER_CAPABILITIES=compute,utility --gpus 'all,"capabilities=compute,utility"' --shm-size="60gb" --restart unless-stopped textgen-container:latest

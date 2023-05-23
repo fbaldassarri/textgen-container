@@ -111,6 +111,11 @@ RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
 RUN su - textgen-user -c "cd ~/text-generation-webui \ 
                             && ~/miniconda3/envs/textgen/bin/python3.10 download-model.py facebook/opt-350m "
 
+# ENV for NVIDIA / CUDA to exclude graphics,video,display capabilities as they are not needed
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+ENV NVIDIA_REQUIRE_CUDA "cuda>=7.5 driver>=450"
+
 # Preparing for login
 ENV HOME /home/textgen-home
 WORKDIR ${HOME}/text-generation-webui
