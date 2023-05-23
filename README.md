@@ -1,4 +1,5 @@
-# Docker image to deploy an alpaca-cpp container with conda-ready environments 
+# Dockerfile script to build a docker container for oobabooga/text-generation-webui with conda-ready environments 
+For low GPU VRAM-capable machines
 
 ## Requirements
 
@@ -9,7 +10,7 @@
 
 ## Preliminary steps
 
-Please, install the NVIDIA Container Toolkit following [this guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html).
+Please, make sure you have fully installed/configure the NVIDIA Container Toolkit checking [this guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html).
 
 ## To build the container 
 
@@ -33,19 +34,18 @@ chmod +x build start stop rm
 docker container attach alpaca-cpp-container
 ```
 
-## To connect remotly thorugh SSH (and/or to exchange files through SCP)
-
-```bash
-ssh 
-```
-
-## To stop the container running
+## To stop the container 
 
 ```bash
 ./stop
 ```
 
-### Todo
+## To remove the container 
 
-* Adjust openssh-server setup
-* Adding external volume to store data
+```bash
+./rm
+```
+
+### Note
+
+* 

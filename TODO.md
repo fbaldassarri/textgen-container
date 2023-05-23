@@ -31,10 +31,17 @@ to be corrected to be launched though nvidia-container-runtime
 #### external volumes
 externalize `/text-generation-webui/models
 
-#### Enable SSH/SCP
+#### To connect remotly thorugh SSH (and/or to exchange files through SCP)
+
+```bash
+ssh 
+```
 
 ~~### bitsandbytes GPU-ready~~
 ~~conda install pytorch pytorch-cuda -c pytorch -c nvidia~~
 ~~pip install accelerate~~
 ~~pip install transformers~~
 ~~pip install bitsandbytes~~
+
+#### Deploy image on Docker Hub
+
