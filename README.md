@@ -31,7 +31,7 @@ chmod +x build start stop rm
 ## To connect locally
 
 ```bash
-docker container attach alpaca-cpp-container
+docker container attach text-generation-webui
 ```
 
 ## To stop the container 
