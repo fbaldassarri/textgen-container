@@ -78,7 +78,7 @@ RUN su - textgen-user -c "source ~/.bashrc "
 # Download latest oobabooga/text-generation-webui in text-generation-webui directory and compile it
 RUN su - textgen-user -c "git clone https://github.com/oobabooga/text-generation-webui.git ~/text-generation-webui "
 
-# Install pip upgrade
+# Upgrading pip within textgen conda env
 RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
                             && ~/miniconda3/envs/textgen/bin/pip install --upgrade pip "
 
