@@ -49,3 +49,4 @@ docker container attach text-generation-webui
 ### Note
 
 * Deepspeed does not correctly compile
+* Currently, GPTQ-for-LLaMa and the monkey patch are not included

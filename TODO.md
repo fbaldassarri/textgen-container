@@ -45,3 +45,4 @@ ssh
 
 #### Deploy image on Docker Hub
 
+#### GPTQ-for-LLaMa and the monkey patch
