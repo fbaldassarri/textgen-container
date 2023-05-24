@@ -46,3 +46,6 @@ ssh
 #### Deploy image on Docker Hub
 
 #### GPTQ-for-LLaMa and the monkey patch
+pip install -r requirements.txt --upgrade
+conda install -c conda-forge cudatoolkit-dev -n textgen
+
