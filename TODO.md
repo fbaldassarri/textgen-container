@@ -48,4 +48,8 @@ ssh
 #### GPTQ-for-LLaMa and the monkey patch
 pip install -r requirements.txt --upgrade
 conda install -c conda-forge cudatoolkit-dev -n textgen
-
+mkdir repositories
+cd repositories
+git clone https://github.com/oobabooga/GPTQ-for-LLaMa.git -b cuda
+cd GPTQ-for-LLaMa
+python setup_cuda.py install
