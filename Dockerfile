@@ -104,6 +104,9 @@ RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
 
 # Install deepspeed and its pre-requirements 
 # RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
+#                           && sudo apt update \
+#                           && sudo apt install linux-headers-$(uname -r) \
+#                           && sudo apt install nvidia-cuda-toolkit nvidia-cuda-toolkit-gc \
 #                           && ~/miniconda3/condabin/conda install -c conda-forge -y mpi4py mpich -n textgen \
 #                           && ~/miniconda3/envs/textgen/bin/pip install -U deepspeed "
 
