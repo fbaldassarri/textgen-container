@@ -103,12 +103,15 @@ RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
                             && ~/miniconda3/envs/textgen/bin/pip install bitsandbytes "
 
 # Install deepspeed and its pre-requirements 
-# RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
-#                           && sudo apt update \
-#                           && sudo apt install linux-headers-$(uname -r) \
-#                           && sudo apt install nvidia-cuda-toolkit nvidia-cuda-toolkit-gc \
-#                           && ~/miniconda3/condabin/conda install -c conda-forge -y mpi4py mpich -n textgen \
-#                           && ~/miniconda3/envs/textgen/bin/pip install -U deepspeed "
+RUN apt-get update \
+    && DEBIAN_FRONTEND="noninteractive" apt-get install -y --no-install-recommends \
+        linux-headers-$(uname -r) \
+        nvidia-cuda-toolkit nvidia-cuda-toolkit-gc \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
+                          && ~/miniconda3/condabin/conda install -c conda-forge -y mpi4py mpich -n textgen \
+                          && ~/miniconda3/envs/textgen/bin/pip install -U deepspeed "
 
 # Download default testing model
 RUN su - textgen-user -c "cd ~/text-generation-webui \ 
