@@ -6,7 +6,7 @@ For low GPU VRAM-capable machines
 1. You have gnu/linux or macOS
 2. You have at least 64 GB of RAM
 3. You have docker engine installed
-4. You have an NVIDIA gpu with >=6GB VRAM and supporting CUDA >=7.5
+4. You have an NVIDIA gpu with >=6GB VRAM and supporting CUDA compute compatibility >=7.5
 
 ## Preliminary steps
 
