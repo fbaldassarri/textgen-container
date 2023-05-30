@@ -19,8 +19,8 @@ docker pull nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
 ~~+ pip3 install torch torchvision torchaudio~~
 
 
-### install deepspeed
-pip install -U deepspeed
+~~### install deepspeed~~
+~~pip install -U deepspeed~~
 
 ~~### launch with deepspeed~~
 ~~deepspeed --num_gpus=1 server.py --deepspeed --chat --model gpt-j-6B~~
