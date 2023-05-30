@@ -103,10 +103,20 @@ RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
                             && ~/miniconda3/envs/textgen/bin/pip install bitsandbytes "
 
 # Install deepspeed and its pre-requirements 
-RUN apt-get update \
+ARG DISTRONAME=ubuntu
+ARG DISTROVERSION=2204
+ARG DISTROARCH=x86_64
+
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/$DISTRONAME$DISTROVERSION/$DISTROARCH/cuda-keyring_1.0-1_all.deb \
+    && dpkg -i cuda-keyring_1.0-1_all.deb \
+    && apt update \
     && DEBIAN_FRONTEND="noninteractive" apt-get install -y --no-install-recommends \
         linux-headers-$(uname -r) \
-        nvidia-cuda-toolkit nvidia-cuda-toolkit-gc \
+        cuda \
+        nvidia-gds \
+        # nvidia-cuda-toolkit \
+        # nvidia-cuda-toolkit-gc \
+        #libcuda \
     && rm -rf /var/lib/apt/lists/*
 
 RUN su - textgen-user -c "~/miniconda3/bin/activate textgen \
